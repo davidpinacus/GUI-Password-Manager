@@ -1,7 +1,9 @@
+
 from tkinter import *
 from tkinter import messagebox
 from random import randint, shuffle, choice
 import pyperclip
+import json
 
 COLOUR="#CBB9D8"
 FONT="Brass Mono Regular"
@@ -25,7 +27,7 @@ def generate_password():
     password="".join(password_list)
     password_section.insert(0,password)
     pyperclip.copy(password)
-    
+
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save_password():
@@ -33,16 +35,52 @@ def save_password():
     website=website_section.get()
     email=email_section.get()
     password=password_section.get()
+    
+    data_format={
+        website:{
+            "email":email,
+            "password":password,
+        }
+    }
+    
     if len(website)==0 or len(password)==0:
         messagebox.showwarning(title="Oop",message="Please don't leave any fields empty!")
     else:
         pop_up=messagebox.askokcancel(title=website,message=f"Email: {email}\nPassword: {password}\n\nClick OK To Save")
         if pop_up:
-            with open("password_data.txt","a") as file:
-                file.write(f"{website} | {email} | {password}\n")
+            try:
+                with open("password_data.json","r") as file:
+                    data=json.load(file)
+                    
+            except FileNotFoundError:
+                with open("password_data.json","w") as file:
+                    json.dump(data_format, file, indent=4)
+            else:
+                data.update(data_format)
+                with open("password_data.json", "w") as file:
+                    json.dump(data, file, indent=4)
+                    
+            finally:
                 website_section.delete(0,END)
                 password_section.delete(0,END)
+                
+# --------------------------- SEARCH PASSWORD -------------------------#
+def find_password():
     
+    check_website=website_section.get()
+    try:
+        with open("password_data.json","r") as file:
+            data=json.load(file)
+            if check_website in data:
+                check_email=data[check_website]["email"]
+                check_password=data[check_website]["password"]
+                messagebox.showinfo(title=check_website,message=f"Email: {check_email}\nPassword: {check_password}\n")
+            else:
+                messagebox.showerror(title="Error",message=f"'{check_website}' not found!")
+                
+    except FileNotFoundError:
+        messagebox.showerror(title="Error",message="No Data File Found!")
+
 # ---------------------------- UI SETUP ------------------------------- #
 
 screen=Tk()
@@ -56,7 +94,7 @@ logo_label.image=logo
 
 website_label=Label(text="Website:",font=(FONT,12,"bold"))
 website_label.grid(row=1,column=0,sticky="e",padx=5,pady=10)
-website_section=Entry(width=55,font=(FONT,10))
+website_section=Entry(width=40,font=(FONT,10))
 website_section.grid(row=1,column=1,sticky="w",padx=5,pady=10)
 website_section.focus()
 
@@ -72,9 +110,12 @@ password_section=Entry(width=40,font=(FONT,10))
 password_section.grid(row=3,column=1,sticky="w",padx=5,pady=10)
 
 generate_button=Button(text="Generate",font=(FONT,10,"bold"),command=generate_password)
-generate_button.grid(row=3,column=2,padx=5,pady=10)
+generate_button.grid(row=3,column=2,padx=0,pady=10)
 
 add_button=Button(text="Add",font=(FONT,10,"bold"),width=55,command=save_password)
 add_button.grid(row=4,column=1,padx=5,pady=10)
+
+search_button=Button(text="Search",font=(FONT,10,"bold"),command=find_password)
+search_button.grid(row=1,column=2,sticky="w",padx=5,pady=10)
 
 screen.mainloop()
