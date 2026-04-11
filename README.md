@@ -1,34 +1,37 @@
 # 🔐 Password Manager (Python - Tkinter)
 
-A simple and secure Password Manager built using Python Tkinter.
-Generate strong passwords and store them locally with ease.
+A modern Password Manager built using Python Tkinter.
+Generate secure passwords, store them safely in JSON format, and quickly search saved credentials.
 
 ---
 
 ## 🎯 Features
 
-* 🔑 Random secure password generator
+* 🔑 Strong random password generator
 * 📋 Auto copy to clipboard
-* 💾 Save passwords locally
+* 💾 Save passwords in **JSON format**
+* 🔍 Search saved credentials instantly
 * ⚠️ Input validation with popups
-* 🖥️ Clean GUI design
+* 🖥️ Clean and simple GUI
 
 ---
 
 ## 📁 Project Structure
 
-```id="k2l9sd"
+```id="u92kls"
 .
 ├── main.py
 ├── password.png
-├── password_data.txt
+├── Screenshot.png
+├── password_data.json
 ```
 
 ### Files Overview
 
-* **main.py** → Main logic, UI, and password handling 
-* **password.png** → UI logo image
-* **password_data.txt** → Stores saved credentials
+* **main.py** → Main logic, UI, password generation, saving & search 
+* **password.png** → UI logo
+* **Screenshot.png** → App preview
+* **password_data.json** → Stores credentials securely
 
 ---
 
@@ -38,24 +41,26 @@ Generate strong passwords and store them locally with ease.
 
   * Website
   * Email/Username
-* Click **Generate** to create a strong password
-* Password is automatically copied to clipboard
-* Click **Add** to save credentials
+* Click **Generate** → Creates a strong password
+* Password is automatically copied 📋
+* Click **Add** → Saves data into JSON file
+* Use **Search** → Retrieve saved credentials instantly
 
 ---
 
 ## 🔒 Security Note
 
-* Passwords are stored locally in a `.txt` file
-* No encryption is used (for learning purposes only)
+* Data is stored locally in a `.json` file
+* No encryption implemented (for learning/demo purposes)
 
 ---
 
 ## 🧠 Concepts Used
 
 * Tkinter GUI
+* JSON data handling
 * Random password generation
-* File handling
+* File handling (read/write/update)
 * Clipboard handling (pyperclip)
-* Input validation
+* Exception handling
 
