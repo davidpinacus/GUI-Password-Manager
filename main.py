@@ -90,7 +90,6 @@ screen.config(padx=20,pady=20,bg=COLOUR,highlightthickness=0)
 logo=PhotoImage(file="password.png")
 logo_label=Label(image=logo,bg=COLOUR,highlightthickness=0)
 logo_label.grid(row=0,column=0,columnspan=2,pady=20)
-logo_label.image=logo
 
 website_label=Label(text="Website:",font=(FONT,12,"bold"))
 website_label.grid(row=1,column=0,sticky="e",padx=5,pady=10)
