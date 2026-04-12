@@ -55,6 +55,10 @@ def save_password():
             except FileNotFoundError:
                 with open("password_data.json","w") as file:
                     json.dump(data_format, file, indent=4)
+                    
+            except json.JSONDecodeError:
+                with open("password_data.json","w") as file:
+                    json.dump(data_format, file, indent=4)
             else:
                 data.update(data_format)
                 with open("password_data.json", "w") as file:
@@ -80,6 +84,9 @@ def find_password():
                 
     except FileNotFoundError:
         messagebox.showerror(title="Error",message="No Data File Found!")
+        
+    except json.JSONDecodeError:
+        messagebox.showerror(title="Error",message="No passwords saved yet!")
 
 # ---------------------------- UI SETUP ------------------------------- #
 
