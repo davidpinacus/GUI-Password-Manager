@@ -1,22 +1,22 @@
-# 🔐 Password Manager (Python - Tkinter)
+# Password Manager (Python - Tkinter)
 
 A modern Password Manager built using Python Tkinter.
 Generate secure passwords, store them safely in JSON format, and quickly search saved credentials.
 
 ---
 
-## 🎯 Features
+# Features
 
-* 🔑 Strong random password generator
-* 📋 Auto copy to clipboard
-* 💾 Save passwords in **JSON format**
-* 🔍 Search saved credentials instantly
-* ⚠️ Input validation with popups
-* 🖥️ Clean and simple GUI
+*  Strong random password generator
+*  Auto copy to clipboard
+*  Save passwords in **JSON format**
+*  Search saved credentials instantly
+*  Input validation with popups
+*  Clean and simple GUI
 
 ---
 
-## 📁 Project Structure
+# Project Structure
 
 ```id="u92kls"
 .
@@ -35,7 +35,7 @@ Generate secure passwords, store them safely in JSON format, and quickly search 
 
 ---
 
-## 🎮 How It Works
+## How It Works
 
 * Enter:
 
@@ -48,14 +48,14 @@ Generate secure passwords, store them safely in JSON format, and quickly search 
 
 ---
 
-## 🔒 Security Note
+## Security Note
 
 * Data is stored locally in a `.json` file
 * No encryption implemented (for learning/demo purposes)
 
 ---
 
-## 🧠 Concepts Used
+## Concepts Used
 
 * Tkinter GUI
 * JSON data handling
