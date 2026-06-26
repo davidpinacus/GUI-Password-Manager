@@ -3,6 +3,10 @@
 A modern Password Manager built using Python Tkinter.
 Generate secure passwords, store them safely in JSON format, and quickly search saved credentials.
 
+---
+
+## Screenshot
+
 <img width="742" height="804" alt="image" src="https://github.com/user-attachments/assets/659fe0be-6a30-4816-90a6-870bb37c81e8" />
 
 ---
